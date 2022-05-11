@@ -43,7 +43,15 @@
       - Poor quality data. Errors in the test data, outliers and noise will reduce model performance.
       - Irrelevant features. The features in the training data are not effective in determining the desired solution.
 1. If your model performs great on the training data but generalizes poorly to new instances, what is happening? Can you name three possible solutions?
+    - The model is overfitting the data. Three possible solutions are:
+     - Holdout validation. Separate a validation set from the training set. Train the model on the training set (minus the validation set) and then select the model that performs best on the validation set.
+     - Perform cross-validation. Use many small validation sets to select the model parameters that work best over all the small validation sets.
+      - Use a train-dev set. The train-dev set is held out from the training data. If the model works well on the train-dev set, then the model is not overfitting the data. If it is not, then the data in the train-dev set is significantly different than the training set data. There is a data mismatch.
 1. What is a test set, and why would you want to use it?
+  - The test set is used to evaluate the performance of the model tuned on the training set. Without validation of the model how would you be confident in deployment?
 1. What is the purpose of a validation set?
+   - The validation set is used to evaluate performance of the models being developed. It provides feedback on what set of model parameters worked well and which ones did not.
 1. What is a train-dev set, when do you need it, and how do you use it?
+  - A train-dev set is a set-aside of "real" data. It should be used when there could be a significant difference between the training set and "real" data. A model that is performing well on the test set can also be used to evaluate the train-dev set. Whether the model performs well or not on the train-dev set is indicative of overfitting or data mismatch.
 1. What can go wrong if you tune hyperparameter using the test set?
+  - Risk of overfitting the data and poor performance once the model is deployed.
